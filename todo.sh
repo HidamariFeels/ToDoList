@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp out com.todolist.model.Main "$@"
+java -cp bin com.todolist.model.Main "$@"

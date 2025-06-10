@@ -1,3 +1,2 @@
 #!/bin/bash
-mkdir -p classfiles
-javac -d out $(find src/main/java -name "*.java")
+javac -d bin $(find src/main/java -name "*.java")
