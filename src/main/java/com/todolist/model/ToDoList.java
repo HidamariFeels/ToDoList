@@ -39,7 +39,7 @@ public class ToDoList {
       }
     }
 
-    throw new TaskNotFoundException();
+    throw new TaskNotFoundException("Task with ID " + id + " not found");
   }
 
   public ArrayList<Entry> getTodo() {

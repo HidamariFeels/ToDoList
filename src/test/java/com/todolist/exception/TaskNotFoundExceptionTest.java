@@ -13,7 +13,7 @@ public class TaskNotFoundExceptionTest {
     try {
     todo.completeTask(1);
     } catch (Exception e) {
-      System.out.println("Task not found");
+      System.out.println(e.getMessage());
     }
   }
 
