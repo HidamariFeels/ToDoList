@@ -1,3 +1,4 @@
+package com.todolist.model;
 public class Entry {
   
   private static int idcounter = 1;

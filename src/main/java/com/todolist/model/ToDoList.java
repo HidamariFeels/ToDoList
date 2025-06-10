@@ -1,5 +1,7 @@
+package com.todolist.model;
 import java.util.ArrayList;
 import java.util.Iterator;
+import com.todolist.exception.TaskNotFoundException;
 
 public class ToDoList {
   
@@ -16,7 +18,7 @@ public class ToDoList {
     todo.add(entry);
   }
 
-  public void completeTask(int id) {
+  public void completeTask(int id) throws TaskNotFoundException {
     Entry task = getEntryById(id);
 
     task.setStatus("completed");
@@ -24,23 +26,20 @@ public class ToDoList {
     completed.add(task);
   }
 
-  public Entry getEntryById(int id) {
+  public Entry getEntryById(int id) throws TaskNotFoundException {
     Iterator<Entry> it = todo.iterator();
-    Entry taskToBeReturned = null;
     
     // Iterate through to-do list
     while (it.hasNext()) {
       Entry task = it.next();
       // If the ID matches
       if (task.getId() == id) {
-        // Set the task to be returned
-        taskToBeReturned = task;
-        break;
+        // Return the task
+        return task;
       }
     }
 
-    // Return the task
-    return taskToBeReturned;
+    throw new TaskNotFoundException();
   }
 
   public ArrayList<Entry> getTodo() {

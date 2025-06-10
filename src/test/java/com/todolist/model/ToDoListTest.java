@@ -1,6 +1,10 @@
+package com.todolist.model;
+
+import com.todolist.exception.TaskNotFoundException;
+
 public class ToDoListTest {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws TaskNotFoundException {
 
     // Test 1 - Adding an entry to the to-do list
     ToDoList todo = new ToDoList();
@@ -12,7 +16,7 @@ public class ToDoListTest {
     // Test 2 - Completing a task
     
     todo.completeTask(1);
-    
+
     System.out.println("\nTest 2 - Complete task\n" + todo.getCompleted().get(0));
 
   }
