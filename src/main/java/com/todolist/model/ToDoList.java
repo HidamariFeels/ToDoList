@@ -13,7 +13,7 @@ public class ToDoList {
     completed = new ArrayList<Entry>();
   }
 
-  public void addEntry(String task) {
+  public void addTask(String task) {
     Entry entry = new Entry(task, "to-do");
     todo.add(entry);
   }
@@ -40,6 +40,18 @@ public class ToDoList {
     }
 
     throw new TaskNotFoundException("Task with ID " + id + " not found");
+  }
+
+  public void showToDoTasks() {
+    for (Entry e : todo) {
+      System.out.println(e + "\n");
+    }
+  }
+
+  public void showCompletedTasks() {
+    for (Entry e : completed) {
+      System.out.println(e + "\n");
+    }
   }
 
   public ArrayList<Entry> getTodo() {

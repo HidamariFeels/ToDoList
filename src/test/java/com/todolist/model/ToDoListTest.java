@@ -9,7 +9,7 @@ public class ToDoListTest {
     // Test 1 - Adding an entry to the to-do list
     ToDoList todo = new ToDoList();
 
-    todo.addEntry("complete this project");
+    todo.addTask("complete this project");
     
     System.out.println("Test 1 - Add entry to to-do\n" + todo.getTodo().get(0));
 
@@ -19,6 +19,24 @@ public class ToDoListTest {
 
     System.out.println("\nTest 2 - Complete task\n" + todo.getCompleted().get(0));
 
+    // Test 3 - Showing list of to-do tasks
+    
+    System.out.println("\nTest 3 - Show to-do tasks");
+    
+    todo.addTask("go on a walk");
+    todo.addTask("cook dinner");
+    todo.addTask("do homework");
+
+    todo.showToDoTasks();
+
+    // Test 4 -Showing list of completed tasks
+
+    System.out.println("Test 4 - Show completed tasks\n");
+
+    todo.completeTask(2);
+    todo.completeTask(3);
+
+    todo.showCompletedTasks();
   }
 
 }
