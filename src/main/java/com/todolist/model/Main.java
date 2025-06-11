@@ -52,11 +52,10 @@ public class Main {
           
           try {
           todo.completeTask(checkInput);
+          System.out.println("Task completed!");
         } catch (Exception e) {
           System.out.println(e.getMessage());
         }
-
-        System.out.println("Task completed!");
 
         break;
 
