@@ -4,8 +4,12 @@
 
 Command List:
 
-add - Adds a new task to the to-do list
+add - Adds a new task to the to-do list 
+
 todo - Displays your to-do tasks
+
 done - Displays your completed tasks
+
 check - Completes a to-do task
+
 exit - Exits the program
