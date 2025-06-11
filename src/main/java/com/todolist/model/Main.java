@@ -58,6 +58,26 @@ public class Main {
         }
 
         break;
+        
+        case "save":
+          try {
+          todo.saveToDo("save.json");
+          System.out.println("Saved!");
+          } catch (Exception e) {
+            System.out.println("Saving file failed.");
+          }
+
+          break;
+
+        case "load":
+          try {
+            todo.loadToDo("save.json");
+            System.out.println("Loaded!");
+          } catch (Exception e) {
+            System.out.println("Saving file failed.");
+          }
+
+          break;
 
         default:
           System.out.println("Unknown command");

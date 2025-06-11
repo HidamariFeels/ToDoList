@@ -1,6 +1,11 @@
 package com.todolist.model;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import com.google.gson.Gson;
 import com.todolist.exception.EmptyListException;
 import com.todolist.exception.TaskNotFoundException;
 
@@ -58,6 +63,27 @@ public class ToDoList {
     }
     for (Entry e : completed) {
       System.out.println(e + "\n");
+    }
+  }
+
+  public void saveToDo(String file) throws IOException {
+    Gson gson = new Gson();
+    try (FileWriter writer = new FileWriter(file)) {
+      gson.toJson(this, writer);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public void loadToDo(String file) throws IOException
+  {
+    Gson gson = new Gson();
+    try (FileReader reader = new FileReader(file)) {
+      ToDoList loadedToDo = gson.fromJson(reader, ToDoList.class);
+      this.todo = loadedToDo.todo;
+      this.completed = loadedToDo.completed;
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
   }
 

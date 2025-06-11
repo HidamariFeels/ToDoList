@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp bin com.todolist.model.Main "$@"
+mvn -q exec:java -Dexec.mainClass="com.todolist.model.Main"
