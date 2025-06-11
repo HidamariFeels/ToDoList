@@ -30,15 +30,23 @@ public class Main {
           break;
 
         case "todo":
+          try {
           todo.showToDoTasks();
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
           break;
           
         case "done":
+          try {
           todo.showCompletedTasks();
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
           break;
 
         case "check":
-          System.out.println("Which task? (ID): ");
+          System.out.print("Which task? (ID): ");
           int checkInput = scanner.nextInt();
           scanner.nextLine();
           
@@ -48,6 +56,8 @@ public class Main {
           System.out.println(e.getMessage());
         }
 
+        System.out.println("Task completed!");
+
         break;
 
         default:
@@ -55,5 +65,7 @@ public class Main {
 
       }
     }
+
+    scanner.close();
   }
 }

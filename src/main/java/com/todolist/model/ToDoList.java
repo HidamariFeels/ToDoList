@@ -1,6 +1,7 @@
 package com.todolist.model;
 import java.util.ArrayList;
 import java.util.Iterator;
+import com.todolist.exception.EmptyListException;
 import com.todolist.exception.TaskNotFoundException;
 
 public class ToDoList {
@@ -42,13 +43,19 @@ public class ToDoList {
     throw new TaskNotFoundException("Task with ID " + id + " not found");
   }
 
-  public void showToDoTasks() {
+  public void showToDoTasks() throws EmptyListException {
+    if (todo.isEmpty()) {
+      throw new EmptyListException("List is empty, good job!");
+    }
     for (Entry e : todo) {
       System.out.println(e + "\n");
     }
   }
 
-  public void showCompletedTasks() {
+  public void showCompletedTasks() throws EmptyListException {
+    if (completed.isEmpty()) {
+      throw new EmptyListException("List is empty, better start working...");
+    }
     for (Entry e : completed) {
       System.out.println(e + "\n");
     }
