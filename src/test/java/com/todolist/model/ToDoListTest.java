@@ -1,10 +1,11 @@
 package com.todolist.model;
 
+import com.todolist.exception.EmptyListException;
 import com.todolist.exception.TaskNotFoundException;
 
 public class ToDoListTest {
 
-  public static void main(String[] args) throws TaskNotFoundException {
+  public static void main(String[] args) throws TaskNotFoundException, EmptyListException {
 
     // Test 1 - Adding an entry to the to-do list
     ToDoList todo = new ToDoList();
@@ -26,6 +27,7 @@ public class ToDoListTest {
     todo.addTask("go on a walk");
     todo.addTask("cook dinner");
     todo.addTask("do homework");
+
 
     todo.showToDoTasks();
 
