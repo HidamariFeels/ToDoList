@@ -12,4 +12,8 @@ done - Displays your completed tasks
 
 check - Completes a to-do task
 
+save - Saves to-do list
+
+load - Loads to-do list
+
 exit - Exits the program
