@@ -1,5 +1,7 @@
 package com.todolist.model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Scanner;
 import com.todolist.model.Entry.Priority;
 
@@ -25,6 +27,7 @@ public class Main {
           System.out.print("Enter task: ");
           String taskInput = scanner.nextLine();
 
+          try {
           System.out.print("Enter priority (low/medium/high): ");
           String priorityInput = scanner.nextLine();
           Priority priority = Priority.valueOf(priorityInput.toUpperCase());
@@ -32,6 +35,9 @@ public class Main {
           todo.addTask(taskInput, priority);
 
           System.out.println("Task added!");
+        } catch (Exception e) {
+          System.out.println("Invalid priority");
+        }
           break;
 
         case "todo":
@@ -51,9 +57,20 @@ public class Main {
           break;
 
         case "check":
-          System.out.print("Which task? (ID): ");
-          int checkInput = scanner.nextInt();
-          scanner.nextLine();
+
+          int checkInput;
+
+          while (true) {
+            System.out.print("Which task? (ID): ");
+            if (scanner.hasNextInt()) {
+              checkInput = scanner.nextInt();
+              scanner.nextLine();
+              break;
+            } else {
+              System.out.println("Please enter an integer");
+              scanner.nextLine();
+            }
+          }
           
           try {
           todo.completeTask(checkInput);
@@ -88,7 +105,21 @@ public class Main {
             todo.loadToDo("save.json");
             System.out.println("Loaded!");
           } catch (Exception e) {
-            System.out.println("Saving file failed.");
+            System.out.println("Loading file failed.");
+          }
+
+          break;
+
+        case "help":
+
+          try (BufferedReader reader = new BufferedReader(new FileReader("README.md"))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+              System.out.println(line);
+            }
+          } catch (Exception e) {
+            System.out.println("README.md file not found");
           }
 
           break;

@@ -4,6 +4,8 @@
 
 Command List:
 
+help - Show list of commands
+
 add - Adds a new task to the to-do list 
 
 todo - Displays your to-do tasks
