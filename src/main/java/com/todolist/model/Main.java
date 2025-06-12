@@ -1,6 +1,7 @@
 package com.todolist.model;
 
 import java.util.Scanner;
+import com.todolist.model.Entry.Priority;
 
 public class Main {
 
@@ -22,9 +23,13 @@ public class Main {
         
         case "add":
           System.out.print("Enter task: ");
-          String addInput = scanner.nextLine();
+          String taskInput = scanner.nextLine();
 
-          todo.addTask(addInput);
+          System.out.print("Enter priority (low/medium/high): ");
+          String priorityInput = scanner.nextLine();
+          Priority priority = Priority.valueOf(priorityInput.toUpperCase());
+
+          todo.addTask(taskInput, priority);
 
           System.out.println("Task added!");
           break;
@@ -56,8 +61,17 @@ public class Main {
         } catch (Exception e) {
           System.out.println(e.getMessage());
         }
+          
+          break;
 
-        break;
+        case "sort":
+          try { 
+            todo.sortByPriority();
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+
+          break;
         
         case "save":
           try {

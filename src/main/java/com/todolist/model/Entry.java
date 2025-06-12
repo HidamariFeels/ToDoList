@@ -7,15 +7,23 @@ public class Entry {
   private String status;
   private int id;
 
-  public Entry(String task, String status) {
+  enum Priority {
+    HIGH, MEDIUM, LOW
+  }
+
+  private Priority priority;
+
+
+  public Entry(String task, String status, Priority priority) {
     this.task = task;
     this.status = status;
+    this.priority = priority;
     this.id = idcounter++;
   }
 
   @Override
   public String toString() {
-    return "Task: " + task + "\nStatus: " + status + "\nId: " + id;
+    return "Task: " + task + "\nStatus: " + status + "\nPriority: " + priority + "\nId: " + id;
   }
 
   public String getTask() {
@@ -40,6 +48,14 @@ public class Entry {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public Priority getPriority() {
+    return priority;
+  }
+
+  public void setPriority(Priority priority) {
+    this.priority = priority;
   }
 
 }

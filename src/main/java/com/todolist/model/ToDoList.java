@@ -4,10 +4,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.todolist.exception.EmptyListException;
 import com.todolist.exception.TaskNotFoundException;
+import com.todolist.model.Entry.Priority;
 
 public class ToDoList {
   
@@ -19,8 +22,8 @@ public class ToDoList {
     completed = new ArrayList<Entry>();
   }
 
-  public void addTask(String task) {
-    Entry entry = new Entry(task, "to-do");
+  public void addTask(String task, Priority priority) {
+    Entry entry = new Entry(task, "to-do", priority);
     todo.add(entry);
   }
 
@@ -85,6 +88,18 @@ public class ToDoList {
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
+  }
+
+  public void sortByPriority() throws EmptyListException {
+    Comparator<Entry> compareByPriority = Comparator.comparing(Entry::getPriority);
+    
+    ArrayList<Entry> sortedTasks = (ArrayList<Entry>) todo.stream().sorted(compareByPriority)
+        .collect(Collectors.toList());
+
+    ArrayList<Entry> unsortedTasks = todo;
+    todo = sortedTasks;
+    showToDoTasks();
+    todo = unsortedTasks;
   }
 
   public ArrayList<Entry> getTodo() {
