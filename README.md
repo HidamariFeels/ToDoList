@@ -12,6 +12,8 @@ done - Displays your completed tasks
 
 check - Completes a to-do task
 
+sort - Sort to-do list by descending priority
+
 save - Saves to-do list
 
 load - Loads to-do list
